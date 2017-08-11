@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">QuickSeries</string>
+    <string name="cannot_load_data">Cannot load data</string>
+    <string name="categories">Categories</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="vacation_spots">Vacation Spots</string>
+    <string name="sort">Sort</string>
+    <string name="send_email">Send email</string>
+    <string name="no_email_client">There are no email clients installed.</string>
+</resources>
