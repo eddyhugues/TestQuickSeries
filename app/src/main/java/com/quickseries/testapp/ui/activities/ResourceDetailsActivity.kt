@@ -23,25 +23,25 @@ class ResourceDetailsActivity : AppCompatActivity() {
         collapsingToolbar.title = resource.title
         Picasso.with(this).load(resource.photo).fit().centerCrop().into(image)
         resource.contactInfo?.email?.let { value ->
-            if (value.isEmpty()) return@let
+            if (value.isEmpty() || (value.isNotEmpty() && value[0].isNullOrEmpty())) return@let
             emailContainer.visibility = View.VISIBLE
             email.text = value[0]
             emailContainer.setOnClickListener { ExternalAppUtils.sendEmail(this@ResourceDetailsActivity, value[0])  }
         }
         resource.contactInfo?.phoneNumber?.let {  value ->
-            if (value.isEmpty()) return@let
+            if (value.isEmpty() || (value.isNotEmpty() && value[0].isNullOrEmpty())) return@let
             phoneContainer.visibility = View.VISIBLE
             phone.text = value[0]
             phoneContainer.setOnClickListener { ExternalAppUtils.phoneCall(this@ResourceDetailsActivity, value[0]) }
         }
         resource.contactInfo?.website?.let {  value ->
-            if (value.isEmpty()) return@let
+            if (value.isEmpty() || (value.isNotEmpty() && value[0].isNullOrEmpty())) return@let
             websiteContainer.visibility = View.VISIBLE
             website.text = value[0]
             websiteContainer.setOnClickListener { ExternalAppUtils.openBrowser(this@ResourceDetailsActivity, value[0]) }
         }
         resource.addresses?.let { value ->
-            if (value.isEmpty()) return@let
+            if (value.isEmpty() || (value.isNotEmpty() && value[0].address1?.isNullOrEmpty() ?: true)) return@let
             addressContainer.visibility = View.VISIBLE
             val addressValue = arrayOf(value[0].address1, value[0].zipCode, value[0].city ,value[0].state, value[0].country)
             address.text = addressValue.joinToString(",")
